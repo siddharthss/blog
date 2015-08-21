@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+    <h1>Create New Account</h1>
+    <hr>
+    <form action="{% url 'add_acc' %}" method="post">
+        {% csrf_token%}
+        <h4>name:</h4><input type="text" name="name">
+        <h4>username:</h4><input type="text" name="username">
+        <h4>password:</h4><input type="password" name="password">
+        <h4>reenter password:</h4><input type="password" name="repassword">
+        <br>
+        <br>
+        <br>
+        <input type="submit" value="Create">
+        <input type="reset">
+
+    </form>
+
+</body>
+</html>

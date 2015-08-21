@@ -1,0 +1,48 @@
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<p>welcome,{{user.first_name}}
+<center><h1>Blog</h1></center>
+<hr>
+{% if article_list %}
+    <table border="2" >
+        <tr>
+            <th>Title</th>
+            <th>Creator</th>
+            <th>Published date</th>
+            <th></th>
+        </tr>
+        <ul>
+            {% for article in article_list %}
+                <tr>
+                    <td><li><a href="{% url 'display' article.id %}">{{ article.title }}</a></td>
+                    <td>{{ article.user_fk.first_name }}
+                    <td>{{ article.pub_date }}</td>
+                    <td>
+                            <form action="{% url 'delete' article.id %}" method="post">
+                            {% csrf_token %}
+                            <input type="submit" value="Remove">
+                            </form>
+                    </td>
+                </tr>
+                </li>
+            {%endfor%}
+        </ul>
+    </table>
+{% else %}
+    <p> no article are available.</p>
+{% endif %}
+    <br>
+    <br>
+
+    <form action="{% url 'create' %}" method="post">
+        {% csrf_token %}
+
+        <input type="submit" value="Create Article">
+    </form>
+ <a href="{% url 'logout_acc' %}"><button>logout</button></a>
+</body>
+</html>
