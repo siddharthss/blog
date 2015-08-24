@@ -9,10 +9,10 @@
     <hr>
     <form action="{% url 'add_acc' %}" method="post">
         {% csrf_token%}
-        <h4>name:</h4><input type="text" name="name">
-        <h4>username:</h4><input type="text" name="username">
-        <h4>password:</h4><input type="password" name="password">
-        <h4>reenter password:</h4><input type="password" name="repassword">
+        <h4>name:</h4><input type="text" name="name" required>
+        <h4>username:</h4><input type="text" name="username" required>
+        <h4>password:</h4><input type="password" name="password" required>
+        <h4>reenter password:</h4><input type="password" name="repassword" required>
         <br>
         <br>
         <br>

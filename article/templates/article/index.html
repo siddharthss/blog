@@ -4,8 +4,8 @@
     <title></title>
 </head>
 <body>
-<p>welcome,{{user.first_name}}
 <center><h1>Blog</h1></center>
+<p>welcome,{{user.first_name}}</p>
 <hr>
 {% if article_list %}
     <table border="2" >
@@ -40,9 +40,9 @@
 
     <form action="{% url 'create' %}" method="post">
         {% csrf_token %}
-
         <input type="submit" value="Create Article">
     </form>
- <a href="{% url 'logout_acc' %}"><button>logout</button></a>
+
+    <a href="{% url 'logout_acc' %}"><button>logout</button></a>
 </body>
 </html>

@@ -1,6 +1,4 @@
 from django.shortcuts import render, redirect
-from django.http import HttpResponse
-from models import Creator
 from django.contrib.auth.models import User
 from django.contrib.auth import authenticate,login,logout
 from article import views
@@ -16,12 +14,12 @@ def check_login_user(request):
     if user is not None:
         if user.is_active:
             login(request,user)
-            return redirect(views.index)
+            return redirect(views.index_view)
         else:
-            context={'error':"invalid user"}
-            return render(request, 'creator/login.html',context)
+            return redirect(login_view)
     else:
-        return redirect(login_view)
+        context = {'error':"invalid username or password"}
+        return render(request, 'creator/login.html',context)
 
 def create_acc_view(request):
     return render(request, 'creator/create_account.html')
