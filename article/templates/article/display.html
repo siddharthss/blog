@@ -33,8 +33,14 @@
 </form>
 
     <a href="{% url 'index' %}"><button>Back</button></a>
-
+    <br>
 {% endif %}
+{% if messages %}
+    {%for message in messages%}
+        {{message}}
+    {%endfor%}
+{% endif %}
+
 
 </body>
 </html>

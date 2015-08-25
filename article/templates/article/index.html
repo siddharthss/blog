@@ -22,10 +22,12 @@
                     <td>{{ article.user_fk.first_name }}
                     <td>{{ article.pub_date }}</td>
                     <td>
+                            {%if user == article.user_fk %}
                             <form action="{% url 'delete' article.id %}" method="post">
                             {% csrf_token %}
                             <input type="submit" value="Remove">
                             </form>
+                            {%endif%}
                     </td>
                 </tr>
                 </li>
@@ -35,9 +37,14 @@
 {% else %}
     <p> no article are available.</p>
 {% endif %}
-    <br>
-    <br>
 
+{% if messages %}
+    {%for message in messages%}
+        {{message}}
+    {%endfor%}
+{% endif %}
+    <br>
+    <br>
     <form action="{% url 'create' %}" method="post">
         {% csrf_token %}
         <input type="submit" value="Create Article">
