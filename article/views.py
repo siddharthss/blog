@@ -1,11 +1,10 @@
-from django.core.urlresolvers import reverse
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
 from .models import Article
 from django.utils import timezone
-from django.http import HttpResponse
 from django.contrib.auth.models import User
 from django.contrib.auth.decorators import login_required
 from django.contrib import messages
+
 
 @login_required
 def index_view(request):
@@ -18,7 +17,7 @@ def index_view(request):
 @login_required
 def display_view(request, article_id):
     """ view to display selected object on display page and render article/display.html"""
-    search_article = Article.objects.get(pk=article_id)
+    search_article = get_object_or_404(Article, pk=article_id)
     return render(request, 'article/display.html', {'search_article': search_article,'user_req':request.user})
 
 @login_required

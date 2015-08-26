@@ -19,28 +19,27 @@
 
     <center><h1>Article</h1></center>
     <hr>
-<form action="{% url 'update_content' search_article.id %}" method="post">
-        {% csrf_token %}
-    <h4>Article title:&nbsp;&nbsp;&nbsp;
-        <input type="text" name="update_title" value="{{ search_article.title }}">
-    </h4>
-    <h4>Article creator:&nbsp;&nbsp;&nbsp;{{ search_article.user_fk }}</h4>
-    <h4>Article published date:&nbsp;&nbsp;&nbsp;{{ search_article.pub_date }}</h4>
-    <h4>Article update date:&nbsp;&nbsp;&nbsp;{{ search_article.update_date }}</h4>
-    <h4>Article content:</h4>
-        <p><textarea cols="50" rows="10" name="update_content">{{search_article.content}}</textarea></p>
-    <input type="submit" value="Update">
-</form>
+    <form action="{% url 'update_content' search_article.id %}" method="post">
+            {% csrf_token %}
+        <h4>Article title:&nbsp;&nbsp;&nbsp;
+            <input type="text" name="update_title" value="{{ search_article.title }}">
+        </h4>
+        <h4>Article creator:&nbsp;&nbsp;&nbsp;{{ search_article.user_fk }}</h4>
+        <h4>Article published date:&nbsp;&nbsp;&nbsp;{{ search_article.pub_date }}</h4>
+        <h4>Article update date:&nbsp;&nbsp;&nbsp;{{ search_article.update_date }}</h4>
+        <h4>Article content:</h4>
+            <p><textarea cols="50" rows="10" name="update_content">{{search_article.content}}</textarea></p>
+        <input type="submit" value="Update">
+    </form>
 
     <a href="{% url 'index' %}"><button>Back</button></a>
     <br>
 {% endif %}
+
 {% if messages %}
     {%for message in messages%}
         {{message}}
     {%endfor%}
 {% endif %}
-
-
 </body>
 </html>
