@@ -7,7 +7,7 @@
 <center><h1>Blog</h1></center>
 <p>welcome,{{user.first_name}}</p>
 <hr>
-{% if article_list %}
+    {% if article_list %}
     <table border="2" >
         <tr>
             <th>Title</th>
@@ -18,8 +18,8 @@
         <ul>
             {% for article in article_list %}
                 <tr>
-                    <td><li><a href="{% url 'display' article.id %}">{{ article.title }}</a></td>
-                    <td>{{ article.user_fk.first_name }}
+                    <td><li><a href="{% url 'display' article.id %}">{{ article.title }}</a></li></td>
+                    <td>{{ article.user_fk.first_name }}</td>
                     <td>{{ article.pub_date }}</td>
                     <td>
                             {%if user == article.user_fk %}
@@ -30,18 +30,18 @@
                             {%endif%}
                     </td>
                 </tr>
-                </li>
             {%endfor%}
         </ul>
     </table>
-{% else %}
-    <p> no article are available.</p>
-{% endif %}
-{% if messages %}
-    {%for message in messages%}
-        {{message}}
-    {%endfor%}
-{% endif %}
+    {% else %}
+        <p> no article are available.</p>
+    {% endif %}
+
+    {% if messages %}
+        {%for message in messages%}
+            {{message}}
+        {%endfor%}
+    {% endif %}
     <br>
     <br>
     <form action="{% url 'create' %}" method="post">
